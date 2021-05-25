@@ -26,6 +26,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
   <!-- =======================================================
   * Template Name: MyResume - v2.2.1
@@ -652,7 +653,7 @@
 
           <div class="col-lg-8 mt-5 mt-lg-0">
 
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form id="gform" action="forms/contact.php" method="post" role="form" class="php-email-form">
               <div class="form-row">
                 <div class="col-md-6 form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
@@ -731,6 +732,30 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  
+    <script>
+      $("#gform").submit((e)=>{
+      
+          e.preventDefault()
+          $.ajax({
+              url:"https://script.google.com/macros/s/AKfycbwiPi3_SqDT0WHgGU8JLTMT2_3CX1rvMgk61HN7WDqoBT-dc38j0gUjXJHKoN8nh5mX/exec",
+              data:$("#gform").serialize(),
+              method:"post",
+              success:function (response){
+                  alert("Form submitted successfully")
+                  window.location.reload()
+                  //window.location.href="https://google.com"
+              },
+              error:function (err){
+                  alert("Something Error")
+  
+  
+              }
+              })
+          })
+          
+  </script>
 
 </body>
 
